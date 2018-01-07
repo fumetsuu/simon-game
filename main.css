@@ -5,6 +5,10 @@ body {
   background-color: white;
 }
 
+.no-select {
+  user-select: none;
+}
+
 .wrapper {
   margin: 100px auto;
   height: 500px;
@@ -82,6 +86,15 @@ body {
   right: 205px;
 }
 
+.wrapper .simon-active {
+  opacity: 0.5;
+}
+
+.wrapper .unclickable {
+  cursor: hand;
+  pointer-events: none;
+}
+
 .wrapper .gr-c {
   grid-column: 1;
   grid-row: 1;
@@ -128,10 +141,5 @@ body {
 
 .wrapper .green-button:hover, .wrapper .red-button:hover, .wrapper .blue-button:hover, .wrapper .yellow-button:hover {
   cursor: pointer;
-  opacity: 0.3;
-}
-
-.wrapper .green-button:active, .wrapper .red-button:active, .wrapper .blue-button:active, .wrapper .yellow-button:active {
-  opacity: 1;
 }
 /*# sourceMappingURL=main.css.map */

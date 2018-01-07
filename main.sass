@@ -15,6 +15,9 @@ body
     padding: 0
     background-color: $brown
 
+.no-select
+    user-select: none
+
 .wrapper
     margin: 100px auto
     height: $side-length
@@ -93,10 +96,13 @@ body
 
     =simon-hover
         cursor: pointer
-        opacity: 0.3
 
-    =simon-active
-        opacity: 1
+    .simon-active
+        opacity: 0.5
+
+    .unclickable
+        cursor: hand
+        pointer-events: none
 
     .gr-c
         +simon-button($green, 0, 1, 1)
@@ -113,5 +119,3 @@ body
     .green-button:hover, .red-button:hover, .blue-button:hover, .yellow-button:hover
         +simon-hover
 
-    .green-button:active, .red-button:active, .blue-button:active, .yellow-button:active
-        +simon-active
