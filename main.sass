@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Lato|Open+Sans');
+
+$side-length: 500px
+$thickness: 100px
+$green: #6eec61
+$red: #ec6161
+$blue: #87dbfa
+$yellow: #fdff78
+$brown: white
+$white: #424242
+$btn-sides: 50px
+
+body
+    margin: 0
+    padding: 0
+    background-color: $brown
+
+.wrapper
+    margin: 100px auto
+    height: $side-length
+    width: $side-length
+    position: relative
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(2, 1fr)
+    padding: 25px
+    background-color: $white
+    border-radius: 50%
+
+    .level
+        margin-top: $side-length/3
+        grid-column: 1/3
+        justify-self: center
+        font-size: 2.5em
+        text-align: center
+        font-family: 'Lato'
+        color: white
+
+    .level::before
+        content: 'Level'
+        font-size: 0.5em
+        position: absolute
+        top: $side-length/3
+
+    =ctrl-buttons($just, $margin)
+        width: $btn-sides
+        height: $btn-sides
+        justify-self: $just
+        margin-#{$margin}: 25px
+        border-radius: 50%
+        background-color: white
+        outline: none
+        border: none
+        z-index: 100000
+
+    =ctrl-buttons-hover
+        cursor: pointer
+        opacity: 0.5
+
+    =ctrl-buttons-label($content, $side, $margin)
+        font-size: 1em
+        color: white
+        content: $content
+        position: absolute
+        bottom: $side-length/3+30px
+        #{$side}: $side-length/2+$margin
+        
+
+    .start
+        +ctrl-buttons(end, right)
+
+    .restart
+        +ctrl-buttons(start, left)
+
+    .start:hover, .restart:hover
+        +ctrl-buttons-hover
+
+    .start::after
+        +ctrl-buttons-label("Start", "left", -40px)
+
+    .restart::after
+        +ctrl-buttons-label("Restart", "right", -45px)
+
+    =simon-button($colour, $rotate, $gc, $gr)
+        grid-column: $gc
+        grid-row: $gr
+        width: $side-length/2
+        height: $side-length/2
+        stroke: $colour
+        position: absolute
+        outline: none
+        transform: rotate($rotate)
+
+    =simon-hover
+        cursor: pointer
+        opacity: 0.3
+
+    =simon-active
+        opacity: 1
+
+    .gr-c
+        +simon-button($green, 0, 1, 1)
+
+    .re-c
+        +simon-button($red, 90deg, 2, 1)
+
+    .bl-c
+        +simon-button($blue, -180deg, 2, 2);
+
+    .ye-c
+        +simon-button($yellow, -90deg, 1, 2)
+
+    .green-button:hover, .red-button:hover, .blue-button:hover, .yellow-button:hover
+        +simon-hover
+
+    .green-button:active, .red-button:active, .blue-button:active, .yellow-button:active
+        +simon-active

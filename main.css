@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css?family=Lato|Open+Sans");
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.wrapper {
+  margin: 100px auto;
+  height: 500px;
+  width: 500px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 25px;
+  background-color: #424242;
+  border-radius: 50%;
+}
+
+.wrapper .level {
+  margin-top: 166.66667px;
+  grid-column: 1/3;
+  justify-self: center;
+  font-size: 2.5em;
+  text-align: center;
+  font-family: 'Lato';
+  color: white;
+}
+
+.wrapper .level::before {
+  content: 'Level';
+  font-size: 0.5em;
+  position: absolute;
+  top: 166.66667px;
+}
+
+.wrapper .start {
+  width: 50px;
+  height: 50px;
+  justify-self: end;
+  margin-right: 25px;
+  border-radius: 50%;
+  background-color: white;
+  outline: none;
+  border: none;
+  z-index: 100000;
+}
+
+.wrapper .restart {
+  width: 50px;
+  height: 50px;
+  justify-self: start;
+  margin-left: 25px;
+  border-radius: 50%;
+  background-color: white;
+  outline: none;
+  border: none;
+  z-index: 100000;
+}
+
+.wrapper .start:hover, .wrapper .restart:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.wrapper .start::after {
+  font-size: 1em;
+  color: white;
+  content: "Start";
+  position: absolute;
+  bottom: 196.66667px;
+  left: 210px;
+}
+
+.wrapper .restart::after {
+  font-size: 1em;
+  color: white;
+  content: "Restart";
+  position: absolute;
+  bottom: 196.66667px;
+  right: 205px;
+}
+
+.wrapper .gr-c {
+  grid-column: 1;
+  grid-row: 1;
+  width: 250px;
+  height: 250px;
+  stroke: #6eec61;
+  position: absolute;
+  outline: none;
+  transform: rotate(0);
+}
+
+.wrapper .re-c {
+  grid-column: 2;
+  grid-row: 1;
+  width: 250px;
+  height: 250px;
+  stroke: #ec6161;
+  position: absolute;
+  outline: none;
+  transform: rotate(90deg);
+}
+
+.wrapper .bl-c {
+  grid-column: 2;
+  grid-row: 2;
+  width: 250px;
+  height: 250px;
+  stroke: #87dbfa;
+  position: absolute;
+  outline: none;
+  transform: rotate(-180deg);
+}
+
+.wrapper .ye-c {
+  grid-column: 1;
+  grid-row: 2;
+  width: 250px;
+  height: 250px;
+  stroke: #fdff78;
+  position: absolute;
+  outline: none;
+  transform: rotate(-90deg);
+}
+
+.wrapper .green-button:hover, .wrapper .red-button:hover, .wrapper .blue-button:hover, .wrapper .yellow-button:hover {
+  cursor: pointer;
+  opacity: 0.3;
+}
+
+.wrapper .green-button:active, .wrapper .red-button:active, .wrapper .blue-button:active, .wrapper .yellow-button:active {
+  opacity: 1;
+}
+/*# sourceMappingURL=main.css.map */
