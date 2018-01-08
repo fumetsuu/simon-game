@@ -27,7 +27,7 @@ class Game {
         clearInterval(this.pressInterval);
         clearTimeout(this.gameTimeout);
         this.btnPattern = [];
-        $(".level").text("!!");
+        $(".level").text("LOSE");
         this.disableButtons();
         this.seqIndex = 0;
     }
