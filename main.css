@@ -188,6 +188,11 @@ body {
   margin: 8px 10px;
 }
 
+.settings-wrapper .close:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .settings-wrapper .strict-mode {
   grid-row: 1;
   color: white;
@@ -243,6 +248,7 @@ body {
   height: 30px;
   margin: 15px 10px 10px 10px;
   text-align: center;
+  transition: 0.5s;
 }
 
 .settings-wrapper .win-input {
@@ -259,6 +265,7 @@ body {
   height: 30px;
   margin: 15px 10px 10px 10px;
   text-align: center;
+  transition: 0.5s;
 }
 
 .settings-wrapper .ts-input {
@@ -275,6 +282,7 @@ body {
   height: 30px;
   margin: 15px 10px 10px 10px;
   text-align: center;
+  transition: 0.5s;
 }
 
 .settings-wrapper .got-input {
@@ -291,6 +299,11 @@ body {
   height: 30px;
   margin: 15px 10px 10px 10px;
   text-align: center;
+  transition: 0.5s;
+}
+
+.settings-wrapper input::selection {
+  background-color: #6eec61;
 }
 
 .settings-wrapper .save {
@@ -307,7 +320,17 @@ body {
   color: white;
 }
 
+.settings-wrapper .save:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .off {
   display: none;
+}
+
+.error {
+  box-shadow: 1px 1px 10px 1px #ec6161;
+  transition: 0.5s;
 }
 /*# sourceMappingURL=main.css.map */
