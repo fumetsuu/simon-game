@@ -1,6 +1,7 @@
 <head>
         <title>svg</title>
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="./main.js"></script>
         <script src="./game.js"></script>
@@ -49,9 +50,24 @@
                 </svg>
             </div>
             
-            <div class="level no-select">50</div>
+            <div class="level no-select">---</div>
             <button class="start no-select"></button>
             <button class="restart no-select"></button>
+            <button class="settings"><i class="fa fa-cogs"></i></button>
         </div>
+
+        <div class="settings-wrapper off">
+            <button class="close"></button>
+            <div class="strict-mode">Strict Mode:</div>
+            <div class="win-level">Win Level:</div>
+            <div class="time-spacing">Time Spacing:</div>
+            <div class="game-over-timeout">Game Over Timeout:</div>
+            <button class="strict-toggle" type="button"></button>
+            <input type="text" class="win-input"/>
+            <input type="text" class="ts-input"/>
+            <input type="text" class="got-input"/>
+            <button class="save">Save</button>
+        </div>
+
     </body>
     </html>

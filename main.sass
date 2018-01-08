@@ -89,6 +89,22 @@ body
     .restart::after
         +ctrl-buttons-label("Restart", "right", -45px)
 
+    .settings
+        position: absolute
+        background-color: $white
+        color: white
+        border-radius: 50%
+        width: 40px
+        height: 40px
+        top: 0
+        right: 0
+        border: none
+        outline: none
+
+    .settings:hover
+        cursor: pointer
+        opacity: 0.7
+
     =simon-button($colour, $rotate, $gc, $gr)
         grid-column: $gc
         grid-row: $gr
@@ -124,3 +140,89 @@ body
     .green-button:hover, .red-button:hover, .blue-button:hover, .yellow-button:hover
         +simon-hover
 
+.settings-wrapper
+    background-color: $white
+    width: $side-length
+    height: $side-length/2
+    margin: 200px auto
+    border-radius: 5px
+    display: grid
+    grid-template-columns: 2fr 1fr 1fr
+    grid-auto-rows: repeat(4, 1fr)
+
+    .close
+        border-radius: 50%
+        background-color: $red
+        width: 15px
+        height: 15px
+        border: none
+        outline: none
+        grid-column: 4
+        margin: 8px 10px 
+    
+    =settings-label($row)
+        grid-row: $row
+        color: white
+        font-family: 'Open Sans'
+        font-size: 1.2em
+        grid-column: 1
+        margin: 15px 10px 10px 20px
+
+    .strict-mode
+        +settings-label(1)
+
+    .win-level
+        +settings-label(2)
+    
+    .time-spacing
+        +settings-label(3)
+
+    .game-over-timeout
+        +settings-label(4)
+
+    =settings-input($row)
+        grid-row: $row
+        grid-column: 2
+        background-color: grey
+        border: none
+        border-radius: 25px
+        outline: none
+        color: white
+        font-family: 'Lato'
+        font-size: 1em
+        width: 100px
+        height: 30px
+        margin: 15px 10px 10px 10px
+        text-align: center
+
+    .strict-toggle:hover
+        cursor: pointer
+        opacity: 0.6
+
+    .strict-toggle
+        +settings-input(1)
+
+    .win-input
+        +settings-input(2)
+
+    .ts-input
+        +settings-input(3)
+
+    .got-input
+        +settings-input(4)
+
+    .save
+        border: none
+        border-radius: 25px
+        outline: none
+        background-color: $green
+        width: 100px
+        height: 30px
+        grid-column: 3/5
+        justify-self: center
+        margin-top: 15px
+        grid-row: 4
+        color: white
+
+.off
+    display: none

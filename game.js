@@ -1,15 +1,15 @@
 class Game {
-    constructor() {
+    constructor(strictMode, winLevel, timeSpacing, gameOverTimeout) {
         this.level = 0;
-        this.gameTimeoutTime = 5000;
+        this.gameTimeoutTime = gameOverTimeout;
         this.gameTimeout = null;
-        this.timeSpacing = 1000;
-        this.holdDuration = 250;
+        this.timeSpacing = timeSpacing;
+        this.holdDuration = timeSpacing/2;
         this.btnPattern = [];
         this.seqIndex = 0;
         this.pressInterval = null;
-        this.strictMode = false;
-        this.winLevel = 5;
+        this.strictMode = strictMode;
+        this.winLevel = winLevel;
         this.playSequence(false);
      }
 
@@ -46,6 +46,7 @@ class Game {
      }
 
     playSequence(fromFail) {
+        clearTimeout(this.gameTimeout);
         this.disableButtons();
         var self = this; //scope
         if(!fromFail) { //for non strict mode, only adds extra step if the player didnt hit the wrong button
