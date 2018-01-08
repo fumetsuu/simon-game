@@ -8,8 +8,9 @@ class Game {
         this.btnPattern = [];
         this.seqIndex = 0;
         this.pressInterval = null;
+        this.strictMode = false;
         this.winLevel = 5;
-        this.playSequence();
+        this.playSequence(false);
      }
 
     restart() {
@@ -27,6 +28,7 @@ class Game {
         clearTimeout(this.gameTimeout);
         this.btnPattern = [];
         $(".level").text("!!");
+        this.disableButtons();
         this.seqIndex = 0;
     }
 
@@ -43,13 +45,21 @@ class Game {
         $(".level").text(this.level);
      }
 
-     playSequence() {
+    playSequence(fromFail) {
         this.disableButtons();
-        this.addExtraStep();
-        this.updateLevelText();
+        var self = this; //scope
+        if(!fromFail) { //for non strict mode, only adds extra step if the player didnt hit the wrong button
+            this.addExtraStep();
+            this.updateLevelText();
+        } else {
+            $(".level").text("!!");
+            setTimeout(function() {
+                self.updateLevelText()
+            }, 1000);
+
+        }
         //a timeout here
         var ind = 0;
-        var self = this; //scope
         this.pressInterval = setInterval(function() {
             self.registerButtonClick(self.btnPattern[ind]);
             ind++;
@@ -60,13 +70,13 @@ class Game {
          },(this.holdDuration+this.timeSpacing)*(this.btnPattern.length));
      }
 
-     addExtraStep() {
+    addExtraStep() {
         var randB = Math.floor(Math.random()*4); //random from 0 - 3
         this.btnPattern.push(colours[randB]);
         this.level++;
      }
 
-     registerButtonClick(buttonColour) {
+    registerButtonClick(buttonColour) {
          var btnClass = "."+buttonColour+"-button";
         $(btnClass).mousedown();
         setTimeout(function() {
@@ -75,13 +85,13 @@ class Game {
         
      }
 
-     disableButtons() {
+    disableButtons() {
          colours.forEach(function(element) {
             $("."+element+"-button").addClass("unclickable");
          });
      }
 
-     enableButtons() {
+    enableButtons() {
         colours.forEach(function(element) {
            $("."+element+"-button").removeClass("unclickable");
         });
@@ -89,6 +99,7 @@ class Game {
 
     startGameOverTimeout() {
         var self = this;
+        clearTimeout(this.gameTimeout);
         this.gameTimeout = setTimeout(function() {
             self.gameOver();
         }, this.gameTimeoutTime);
@@ -96,25 +107,25 @@ class Game {
 
     //handle user clicking buttons
     checkSequence(button) {
-        clearTimeout(this.gameTimeout);
-        this.gameTimeout = setTimeout(function() {
-            this.gameOver();
-        }, this.gameTimeoutTime);
-        var mistake = false;
+        this.startGameOverTimeout();
         if(button==this.btnPattern[this.seqIndex]) {
             this.seqIndex++;
             if(this.seqIndex == this.btnPattern.length) {
                 if(this.seqIndex == this.winLevel) {
                     this.gameWin();
                 } else {
-                    setTimeout(this.playSequence(), this.timeSpacing);
+                    setTimeout(this.playSequence(false), this.timeSpacing);
                     this.seqIndex = 0;
                 }
             }
         } else {
-            mistake=true;
-            $(".level").text("!!");
-            this.gameOver();
+            if(this.strictMode == true) {
+                $(".level").text("!!");
+                this.gameOver();
+            } else {
+                setTimeout(this.playSequence(true), this.timeSpacing);
+                this.seqIndex = 0;
+            }
         }
     }
 }
